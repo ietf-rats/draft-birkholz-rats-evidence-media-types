@@ -1,7 +1,7 @@
 ---
 title: Media-Type Definitions for TPM 2.0 Generated Evidence Formats
 abbrev: TPM MEDS
-docname: draft-birkholz-evidence-media-types-latest
+docname: draft-birkholz-rats-evidence-media-types-latest
 category: std
 
 ipr: trust200902
