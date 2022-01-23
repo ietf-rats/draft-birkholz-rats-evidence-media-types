@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-01-20T00:38:44.193281+00:00",
+  "timestamp": "2022-01-23T00:32:36.680768+00:00",
   "repo": "ietf-rats/draft-birkholz-rats-evidence-media-types",
   "labels": [
     {
@@ -47,8 +47,69 @@
       "name": "wontfix",
       "description": "This will not be worked on",
       "color": "ffffff"
+    },
+    {
+      "name": "design",
+      "description": "design",
+      "color": "006b75"
     }
   ],
-  "issues": [],
-  "pulls": []
+  "issues": [
+    {
+      "number": 2,
+      "id": "I_kwDOGsgA-M5CLsch",
+      "title": "Naming scheme of media-types",
+      "url": "https://github.com/ietf-rats/draft-birkholz-rats-evidence-media-types/issues/2",
+      "state": "OPEN",
+      "author": "henkbirkholz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "design"
+      ],
+      "body": "Let's collect candidates and document the decision process in this issue.",
+      "createdAt": "2022-01-21T11:25:45Z",
+      "updatedAt": "2022-01-21T14:24:07Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We need to encode two things:\r\n* the TPM 2.0 operation (e.g., quote), and\r\n* the serialisation format (e.g., CBOR, TLV, etc.)\r\n\r\nSome proposals:\r\n\r\n### TPM operation in the media type, serialisation in the suffix\r\n\r\n* `\"application/tpm2_\"` *${TPM 2.0 op}* `\"+\"` *${serialisation format}*\r\n    * e.g.:\r\n        * `application/tpm2_quote+cbor`\r\n        * `application/tpm2_quote+json`\r\n        * Not sure how TLV would be expressed, maybe just as `application/tpm2_quote` with no suffix?\r\n\r\n### TPM operation in the media type, serialisation in a parameter\r\n\r\n* `\"application/tpm2_\"` *${TPM 2.0 op}* `\"; encoding=\"` *${serialisation format}*\r\n    * e.g.:\r\n        * `application/tpm2_quote; encoding=cbor`\r\n        * `application/tpm2_quote; encoding=json`\r\n        * `application/tpm2_quote; encoding=tlv`\r\n          * this format makes things more regular compared to the previous one: TLV is not \"special\" anymore\r\n\r\n### Single TPM 2.0 media type with extensible set of ops and serialisation carried in parameters\r\n\r\n* `\"application/tpm2; op=\"` *<TMP 2.0 op>* `\"; encoding=\"` *${serialisation format}*\r\n    * e.g.:\r\n        * `application/tpm2; op=quote; encoding=cbor`\r\n        * `application/tpm2; op=quote; encoding=json`\r\n        * `application/tpm2; op=quote; encoding=tlv`\r\n\r\n### TPM operation in the media type, serialisation in the suffix\r\n\r\n* `\"application/tpm2+\"` *${serialisation format}* `\"; op=\"` *${TPM 2.0 op}*\r\n    * e.g.:\r\n        * `application/tpm2+cbor; op=quote`\r\n        * As above, this makes TLV somewhat special, e.g.: `application/tpm2; op=quote`\r\n",
+          "createdAt": "2022-01-21T14:23:27Z",
+          "updatedAt": "2022-01-21T14:23:27Z"
+        }
+      ]
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOGsgA-M4xYGlo",
+      "title": "small things",
+      "url": "https://github.com/ietf-rats/draft-birkholz-rats-evidence-media-types/pull/1",
+      "state": "MERGED",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-01-21T10:47:52Z",
+      "updatedAt": "2022-01-22T23:31:57Z",
+      "baseRepository": "ietf-rats/draft-birkholz-rats-evidence-media-types",
+      "baseRefName": "main",
+      "baseRefOid": "2475fd73005134499a6b83f52a90c3737b1b7e58",
+      "headRepository": "ietf-rats/draft-birkholz-rats-evidence-media-types",
+      "headRefName": "small-things",
+      "headRefOid": "91c7b1fdb3613167a67f12a30274e99778a59e44",
+      "closedAt": "2022-01-22T23:31:53Z",
+      "mergedAt": "2022-01-22T23:31:53Z",
+      "mergedBy": "thomas-fossati",
+      "mergeCommit": {
+        "oid": "984b5fb9e36e0c36bd0aeb56310345e7d53bd33b"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
