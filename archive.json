@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-01-23T00:32:36.680768+00:00",
+  "timestamp": "2022-01-30T00:33:34.733142+00:00",
   "repo": "ietf-rats/draft-birkholz-rats-evidence-media-types",
   "labels": [
     {
@@ -63,13 +63,15 @@
       "state": "OPEN",
       "author": "henkbirkholz",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "thomas-fossati"
+      ],
       "labels": [
         "design"
       ],
       "body": "Let's collect candidates and document the decision process in this issue.",
       "createdAt": "2022-01-21T11:25:45Z",
-      "updatedAt": "2022-01-21T14:24:07Z",
+      "updatedAt": "2022-01-28T14:28:07Z",
       "closedAt": null,
       "comments": [
         {
@@ -78,6 +80,13 @@
           "body": "We need to encode two things:\r\n* the TPM 2.0 operation (e.g., quote), and\r\n* the serialisation format (e.g., CBOR, TLV, etc.)\r\n\r\nSome proposals:\r\n\r\n### TPM operation in the media type, serialisation in the suffix\r\n\r\n* `\"application/tpm2_\"` *${TPM 2.0 op}* `\"+\"` *${serialisation format}*\r\n    * e.g.:\r\n        * `application/tpm2_quote+cbor`\r\n        * `application/tpm2_quote+json`\r\n        * Not sure how TLV would be expressed, maybe just as `application/tpm2_quote` with no suffix?\r\n\r\n### TPM operation in the media type, serialisation in a parameter\r\n\r\n* `\"application/tpm2_\"` *${TPM 2.0 op}* `\"; encoding=\"` *${serialisation format}*\r\n    * e.g.:\r\n        * `application/tpm2_quote; encoding=cbor`\r\n        * `application/tpm2_quote; encoding=json`\r\n        * `application/tpm2_quote; encoding=tlv`\r\n          * this format makes things more regular compared to the previous one: TLV is not \"special\" anymore\r\n\r\n### Single TPM 2.0 media type with extensible set of ops and serialisation carried in parameters\r\n\r\n* `\"application/tpm2; op=\"` *<TMP 2.0 op>* `\"; encoding=\"` *${serialisation format}*\r\n    * e.g.:\r\n        * `application/tpm2; op=quote; encoding=cbor`\r\n        * `application/tpm2; op=quote; encoding=json`\r\n        * `application/tpm2; op=quote; encoding=tlv`\r\n\r\n### TPM operation in the media type, serialisation in the suffix\r\n\r\n* `\"application/tpm2+\"` *${serialisation format}* `\"; op=\"` *${TPM 2.0 op}*\r\n    * e.g.:\r\n        * `application/tpm2+cbor; op=quote`\r\n        * As above, this makes TLV somewhat special, e.g.: `application/tpm2; op=quote`\r\n",
           "createdAt": "2022-01-21T14:23:27Z",
           "updatedAt": "2022-01-21T14:23:27Z"
+        },
+        {
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "body": "ACTION @thomas-fossati: send an email to media-types@ietf.org to ask for advice.\r\n\r\n",
+          "createdAt": "2022-01-28T14:13:20Z",
+          "updatedAt": "2022-01-28T14:28:07Z"
         }
       ]
     }
